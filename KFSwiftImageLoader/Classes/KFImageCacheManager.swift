@@ -5,7 +5,6 @@
 
 import UIKit
 import MapKit
-import WatchKit
 
 // MARK: - ImageCacheKeys Struct
 fileprivate struct ImageCacheKeys {
@@ -117,8 +116,6 @@ final public class KFImageCacheManager {
                             loadObserver(button, image: image, initialIndexIdentifier: initialIndexIdentifier)
                         case let annotationView as MKAnnotationView:
                             loadObserver(annotationView, image: image)
-                        case let interfaceImage as WKInterfaceImage:
-                            loadObserver(interfaceImage, image: image, key: key)
                         default:
                             break
                         }
@@ -229,20 +226,6 @@ final public class KFImageCacheManager {
             })
             
             annotationView.completionHolder.completion?(true, nil)
-        }
-    }
-    
-    internal func loadObserver(_ interfaceImage: WKInterfaceImage, image: UIImage, key: String) {
-        DispatchQueue.main.async {
-            // If there's already a cached image on the Apple Watch, simply set the image directly.
-            if WKInterfaceDevice.current().cachedImages[key] != nil {
-                interfaceImage.setImageNamed(key)
-            }
-            else {
-                interfaceImage.setImageData(UIImagePNGRepresentation(image))
-            }
-            
-            interfaceImage.completionHolder.completion?(true, nil)
         }
     }
 }
