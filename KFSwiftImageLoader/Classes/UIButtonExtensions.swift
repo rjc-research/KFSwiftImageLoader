@@ -62,7 +62,7 @@ public extension UIButton {
     */
     final public func loadImage(urlString: String,
                          placeholderImage: UIImage? = nil,
-                             controlState: UIControlState = .normal,
+                         controlState: UIControl.State = .normal,
                         isBackgroundImage: Bool = false,
                                completion: ((_ success: Bool, _ error: NSError?) -> Void)? = nil)
     {
@@ -88,7 +88,7 @@ public extension UIButton {
     */
     final public func loadImage(url: URL,
                    placeholderImage: UIImage? = nil,
-                       controlState: UIControlState = .normal,
+                   controlState: UIControl.State = .normal,
                   isBackgroundImage: Bool = false,
                          completion: ((_ success: Bool, _ error: NSError?) -> Void)? = nil)
     {
@@ -111,7 +111,7 @@ public extension UIButton {
     */
     final public func loadImage(request: URLRequest,
                        placeholderImage: UIImage? = nil,
-                           controlState: UIControlState = UIControlState(),
+                       controlState: UIControl.State = UIControl.State(),
                       isBackgroundImage: Bool = false,
                              completion: ((_ success: Bool, _ error: NSError?) -> Void)? = nil)
     {
